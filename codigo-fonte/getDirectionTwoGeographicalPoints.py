@@ -1,6 +1,7 @@
-# import json
+import json
 # import urllib3.request
 # import urllib3.parse
+import urllib
 import datetime
 import requests
 import time
@@ -18,15 +19,14 @@ def getDirectionTwoGeographicalPoints(origin, destination, mode, date):
     else:
         departure_time = datetime.datetime.strptime(date, '%d-%m-%Y %H:%M:%S')
         departure_time = int(time.mktime(departure_time.timetuple()))
-        print(str(departure_time))
-        query = "http://maps.googleapis.com/maps/api/directions/json?origin=" + origin + "&destination=" + destination +"&departure_time="+ str(departure_time) +"&mode=" + mode + "&language=pt-BR&sensor=false"
+        query = "https://maps.googleapis.com/maps/api/directions/json?origin=" + origin + "&destination=" + destination + "&departure_time=" + str(departure_time) + "&mode=" + mode + "&language=pt-BR&sensor=false&key=AIzaSyAr11wo7Q90rmf7ZReZFVz3OV50g5iW1hI"
 
     #Comment if you don't have Tor in execution on your pc
-    try:
-        socks.set_default_proxy(socks.SOCKS5, "127.0.0.1", 9150)
-        socket.socket = socks.socksocket
-    except:
-        print("Tor not working")
+    #try:
+    #    socks.set_default_proxy(socks.SOCKS5, "127.0.0.1", 9150)
+    #   socket.socket = socks.socksocket
+    #except:
+    #    print("Tor not working")
 
     webUrl = requests.get(query)
 
@@ -36,7 +36,7 @@ def getDirectionTwoGeographicalPoints(origin, destination, mode, date):
 
 
     # Execute google query
-    # webUrl = urllib.request.urlopen(query)
+    #webUrl = urllib.request.urlopen(query)
 
     print(webUrl.status_code)
     if webUrl.status_code == 200:
@@ -69,8 +69,14 @@ def getDirectionTwoGeographicalPoints(origin, destination, mode, date):
         tt3 = tt2["distance"]
         full_distance = tt3["value"]
 
-        # Get duration to go from origin to destination (in seconds)
-        full_duration = theJSON["routes"][0]["legs"][0]["duration"]["value"]
+        #Verify wheter was passed a date to the url
+        if date == None:
+            # Get duration to go from origin to destination (in seconds)
+            full_duration = theJSON["routes"][0]["legs"][0]["duration"]["value"]
+        else:
+            # Get duration in traffic from origin to destination (in second)
+            # Here, the duration is estimated by transit history conditions
+            full_duration = theJSON["routes"][0]["legs"][0]["duration_in_traffic"]["value"]
 
         # Get the number of "paths blocks" (parts of the entire way)
         numSteps = len(theJSON["routes"][0]["legs"][0]["steps"])
@@ -97,4 +103,4 @@ def getDirectionTwoGeographicalPoints(origin, destination, mode, date):
 
     return full_distance, full_duration, paths
 
-# getDirectionTwoGeographicalPoints("JardimdaGranja", "JardimSouto", "driving")
+getDirectionTwoGeographicalPoints("JardimdaGranja", "JardimSouto", "driving", '20-03-2018 15:00:00')
