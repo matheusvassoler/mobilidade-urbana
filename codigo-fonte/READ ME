@@ -1,0 +1,4 @@
+A tabela intermediate_distances_sjc_sp possuí uma chave estrangeira para tabela distances_sjc_sp.
+Essa guarda os trechos de uma região A a B separadamente, assim, guardando o tempo em segundos e a distância.
+
+A tabela distances_sjc_sp diferenta da tabela intermediate_distances_sjc_sp, guarda a diatância e tempo em segundos totais de uma região A a B.
