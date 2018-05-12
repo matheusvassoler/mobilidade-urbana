@@ -11,15 +11,15 @@ import socks # pip install PySocks - https://github.com/Anorov/PySocks
 
 #That function consist of 3 parameters which will be used to calculate the distance, duration
 #and path (Used in roadMappingService)
-def getDirectionTwoGeographicalPoints(origin, destination, mode, date):
+def getDirectionTwoGeographicalPoints(origin, destination, mode, date, key):
     # Ensemble Google API query using origin and destination
 
     if(date == None):
-        query = "http://maps.googleapis.com/maps/api/directions/json?origin=" + origin + "&destination=" + destination + "&mode=" + mode + "&language=pt-BR&sensor=false"
+        query = "http://maps.googleapis.com/maps/api/directions/json?origin=" + origin + "&destination=" + destination + "&mode=" + mode + "&language=pt-BR&sensor=false&key=AIzaSyAr11wo7Q90rmf7ZReZFVz3OV50g5iW1hI"
     else:
         departure_time = datetime.datetime.strptime(date, '%d-%m-%Y %H:%M:%S')
         departure_time = int(time.mktime(departure_time.timetuple()))
-        query = "https://maps.googleapis.com/maps/api/directions/json?origin=" + origin + "&destination=" + destination + "&departure_time=" + str(departure_time) + "&mode=" + mode + "&language=pt-BR&sensor=false&key=AIzaSyAr11wo7Q90rmf7ZReZFVz3OV50g5iW1hI"
+        query = "https://maps.googleapis.com/maps/api/directions/json?origin=" + origin + "&destination=" + destination + "&departure_time=" + str(departure_time) + "&mode=" + mode + "&language=pt-BR&sensor=false&key="+key
 
     #Comment if you don't have Tor in execution on your pc
     #try:
@@ -103,4 +103,4 @@ def getDirectionTwoGeographicalPoints(origin, destination, mode, date):
 
     return full_distance, full_duration, paths
 
-getDirectionTwoGeographicalPoints("JardimdaGranja", "JardimSouto", "driving", '20-03-2018 15:00:00')
+#getDirectionTwoGeographicalPoints("JardimdaGranja", "JardimSouto", "driving", '20-03-2018 15:00:00')
