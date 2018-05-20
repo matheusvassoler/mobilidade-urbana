@@ -13,10 +13,13 @@ def roadsMappingServiceWhen(pp, inputFile, city, state, ori, dest, date1, date2)
 
     #list that contains the google's api key
     apikey = ['AIzaSyAr11wo7Q90rmf7ZReZFVz3OV50g5iW1hI', 'AIzaSyB-kB6JZ-UkSFVGXX0eEIavyMGg-w2whnk', 'AIzaSyClzkVxwXbjphXktb1LZ_MJCprlJMEDvqw', 'AIzaSyDl3vAN7saDAubpUh2f4xb1wIWOhG_lxVc',
-              'AIzaSyBSFnV2oNW-fR8yiMBzxZkTFKpyOLRM4-8', 'AIzaSyBg9nMa0mAAnZyoyCsCO7l7mDS3fciI32c', 'AIzaSyDZke-btxWiEtGsNisNBicP5zsJhiG4XS0']
+              'AIzaSyBSFnV2oNW-fR8yiMBzxZkTFKpyOLRM4-8', 'AIzaSyBg9nMa0mAAnZyoyCsCO7l7mDS3fciI32c', 'AIzaSyDZke-btxWiEtGsNisNBicP5zsJhiG4XS0', 'AIzaSyD79s5kzm_4WJGJKnp6sv2lAADpGeGZEZ4',
+              'AIzaSyDd1KnOEb6u79sJgT4cVV1JrSOcKkvFtBI', 'AIzaSyDwsqAZ-8wB_h23XhKAVshX0MZqa_ty4GI', 'AIzaSyAz1ZrldhSNHUdXjvT9MTDUeiub4MeUND8', 'AIzaSyBQYl-sChyjHoc186BYpKrId6-9nf2Kf9A',
+              'AIzaSyDAmvH9hkaw5NwDHt1_3VPuNX6KFqtcZTo', 'AIzaSyBUguv05oZBYjCZ7OJtxYlUUyzHoyOqlPU', 'AIzaSyACauD8ibd4RDDCb_1C57xm2iJG4Wmj3c8', 'AIzaSyCIdkrYIOqYX3cogj7LnwAi7Kogk2pDcQc',
+              'AIzaSyB4mwWf6m898vPQYd0lGG4-5NDQt0myS4o', 'AIzaSyDBRAo1aS3ihZbj9SnwWD07kA7q1B9XpLA', 'AIzaSyAYoIztpjHUTGGuEKD25_1fnwsIdNEm3FA', 'AIzaSyAC8xAfiMw66cZTNqrp0WA8Y9h2hxGNAHg']
 
     #variable that control the use of the keys
-    keyUse = 0
+    keyUse = 12
 
     #Variable that count the days
     countDay = 0
@@ -95,12 +98,16 @@ def roadsMappingServiceWhen(pp, inputFile, city, state, ori, dest, date1, date2)
             print(idx_origin)
             print(idx_destination)
 
-        if (idx_day == 5 and time == 24) and changeOriginDestination:
+        if idx_day == 29:
+            countDay = 1
+
+        if (idx_day == 26 and time == 24) and changeOriginDestination:
             firstDay = False
             print("ENTROU")
             time = 0
+            #countDay = 1
 
-        if (idx_day == 8 and time == 24) and changeOriginDestination:
+        if (idx_day == 29 and time == 24) and changeOriginDestination:
             idx_destination += 1
             time = 0
             firstDay = True
@@ -198,7 +205,7 @@ def roadsMappingServiceWhen(pp, inputFile, city, state, ori, dest, date1, date2)
                     if cc < pp:
                         cc += 1
                     else:
-                        if keyUse == 0:
+                        if keyUse == 13:
                             cc = cc
                             break
                         else:
