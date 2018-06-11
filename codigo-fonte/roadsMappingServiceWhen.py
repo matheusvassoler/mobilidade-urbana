@@ -19,7 +19,7 @@ def roadsMappingServiceWhen(pp, inputFile, city, state, ori, dest, date1, date2)
               'AIzaSyB4mwWf6m898vPQYd0lGG4-5NDQt0myS4o', 'AIzaSyDBRAo1aS3ihZbj9SnwWD07kA7q1B9XpLA', 'AIzaSyAYoIztpjHUTGGuEKD25_1fnwsIdNEm3FA', 'AIzaSyAC8xAfiMw66cZTNqrp0WA8Y9h2hxGNAHg']
 
     #variable that control the use of the keys
-    keyUse = 12
+    keyUse = 0
 
     #Variable that count the days
     countDay = 0
@@ -163,7 +163,6 @@ def roadsMappingServiceWhen(pp, inputFile, city, state, ori, dest, date1, date2)
                             # Get the distance for backward path
                             [distance, duration,
                              paths] = getDirectionTwoGeographicalPoints.getDirectionTwoGeographicalPoints(destinations, origins, tempmode, full_date, apikey[ keyUse])
-                            print("CERTO22222222!!!!")
 
                             # Record distance and path into database
                             output = recordDistancesDirectionsWhen.recordDistancesDirectionsWhen(j, i, destinations, origins, tempmode, distance, paths, city, state, duration, 0, full_date)
@@ -171,27 +170,23 @@ def roadsMappingServiceWhen(pp, inputFile, city, state, ori, dest, date1, date2)
                         except:
                             # Record distance and path into database
                             output = recordDistancesDirectionsWhen.recordDistancesDirectionsWhen(j, i, destinations, origins, tempmode, '-1', [], city, state, '-1', 1, '')
-                            print("ERRADO2222222!!!!!!!")
                         changeOriginDestination = True
                     else:
                         #A to B
                         try:
                             # Get the distance for forward path
                             [distance, duration, paths]= getDirectionTwoGeographicalPoints.getDirectionTwoGeographicalPoints(origins, destinations, tempmode, full_date, apikey[keyUse])
-                            print("CERTO1111111!!!!")
                             # Record distance and path into database
                             output = recordDistancesDirectionsWhen.recordDistancesDirectionsWhen(i, j, origins, destinations, tempmode, distance, paths, city, state, duration, 0, full_date)
                         except:
                             # Record distance and path into database
                             output = recordDistancesDirectionsWhen.recordDistancesDirectionsWhen(i, j, origins, destinations, tempmode, '-1', [], city, state, '-1', 1, '')
-                            print("ERRADO1111111!!!!!!!")
 
                         #B to A
                         try:
                             # Get the distance for backward path
                             [distance, duration,
                              paths] = getDirectionTwoGeographicalPoints.getDirectionTwoGeographicalPoints(destinations, origins, tempmode, full_date, apikey[keyUse])
-                            print("CERTO22222222!!!!")
 
                             # Record distance and path into database
                             output = recordDistancesDirectionsWhen.recordDistancesDirectionsWhen(j, i, destinations, origins, tempmode, distance, paths, city, state, duration, 0, full_date)
@@ -199,13 +194,12 @@ def roadsMappingServiceWhen(pp, inputFile, city, state, ori, dest, date1, date2)
                         except:
                             # Record distance and path into database
                             output = recordDistancesDirectionsWhen.recordDistancesDirectionsWhen(j, i, destinations, origins, tempmode, '-1', [], city, state, '-1', 1, '')
-                            print("ERRADO2222222!!!!!!!")
 
                     print(cc)
                     if cc < pp:
                         cc += 1
                     else:
-                        if keyUse == 13:
+                        if keyUse == 19:
                             cc = cc
                             break
                         else:
