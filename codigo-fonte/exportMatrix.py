@@ -19,7 +19,7 @@ def exportMatrix(city, state):
     tableName = "distances_" + city + "_" + state
 
     # Get all the records in database that have not been processed yet
-    sql = "SELECT * FROM " + tableName + " ORDER BY CAST(idx_origin AS int), CAST(id AS int) DESC"
+    sql = "SELECT * FROM " + tableName + " ORDER BY CAST(idx_origin AS int), CAST(idx_origin AS int) DESC, CAST(id AS int) DESC"
     print(sql)
     result = cursor.execute(sql)
 
