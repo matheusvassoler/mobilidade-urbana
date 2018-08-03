@@ -3,6 +3,10 @@ import recordDistancesDirectionsWhen
 import importGeographicalPointsFromXLS
 import databaseConnection
 
+#This code calculates the routes based on hours. It use two days. In the first day it's calculates the route starting at 00:00 and finish at 23:00
+#The second day is equal the first day.
+#Both the days can be chosen, but both must be in the same week
+
 def roadsMappingServiceWhen(pp, inputFile, city, state, ori, dest, date1, date2):
     # Connect with database and check if connection have been performed successfully
     con = databaseConnection.connectdb()
