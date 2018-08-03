@@ -15,7 +15,7 @@ def getDirectionTwoGeographicalPoints(origin, destination, mode, date, key):
     # Ensemble Google API query using origin and destination
 
     if(date == None):
-        query = "http://maps.googleapis.com/maps/api/directions/json?origin=" + origin + "&destination=" + destination + "&mode=" + mode + "&language=pt-BR&sensor=false&key=AIzaSyAr11wo7Q90rmf7ZReZFVz3OV50g5iW1hI"
+        query = "https://maps.googleapis.com/maps/api/directions/json?origin=" + origin + "&destination=" + destination + "&mode=" + mode + "&language=pt-BR&sensor=false&key="+key
     else:
         departure_time = datetime.datetime.strptime(date, '%d-%m-%Y %H:%M:%S')
         departure_time = int(time.mktime(departure_time.timetuple()))
