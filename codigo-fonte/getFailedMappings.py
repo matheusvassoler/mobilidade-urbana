@@ -2,6 +2,11 @@ import pandas as pd
 
 #To can run this code is necessary to invoke the method, passing as argument, city, state, sheet_name of the matrix
 #This method search in the matrix data with value X, X means failed mapping
+#To run this code, it's necessary to create the matrix that contains duration and time between zones. This can be done in the archive called exportMatrix.py
+#Before of running the code tt's necessary to remove all failed data from database (This can be done by searching for the failed data by the duration or distance_meters column with value '-1')
+#After remove, it's necessary to recreate the matrix
+#Attention: Some data will have value -1 to duration and distance_meters, because in the some cases it's impossible to make the route between zones (Example, impossible paths in walking mode)
+
 def getFailedMappings(city, state, sheet_name):
     path = "./Matrix/"+"Matrix_"+city+"_"+state+".xlsx"
     df = pd.read_excel(path, sheet_name=sheet_name)
@@ -31,21 +36,6 @@ def getFailedMappings(city, state, sheet_name):
         j = 0
         i += 1
 
-    '''
-    #A loop to interate over dataframe to get the failedMappings(X)
-    for index, row in df.iterrows():
-        for i in range(0, columnLen):
-            if(row[i] == 'X'):
-                #get idOrigin and idDestination contained in the matrix
-                idOrigin = index
-                idDestination = i
-
-                #First, add the pair in a tuple, after add the tuple in the list called failedMappingList
-                failedMappingList.append((idOrigin, idDestination))
-    '''
-
-    print(failedMappingList)
-
     return failedMappingList
 
-getFailedMappings("sjc", "sp", "DrivingDistance")
+#getFailedMappings("sjc", "sp", "DrivingDistance")
