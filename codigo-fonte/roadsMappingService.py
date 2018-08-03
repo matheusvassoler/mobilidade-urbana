@@ -13,6 +13,8 @@ def roadsMappingService(pp, inputFile, city, state, date):
         exit()
     cursor = con.cursor()
 
+    apikey = "AIzaSyAr11wo7Q90rmf7ZReZFVz3OV50g5iW1hI"
+
     # Read from a XLS a matrix where each line is a pair of coords long/lat
     regions = importGeographicalPointsFromXLS.importGeographicalPointsFromXLS(inputFile)
 
@@ -72,7 +74,7 @@ def roadsMappingService(pp, inputFile, city, state, date):
             #A to B
             try:
                 # Get the distance for forward path
-                [distance, duration, paths]= getDirectionTwoGeographicalPoints.getDirectionTwoGeographicalPoints(origins, destinations, tempmode, date)
+                [distance, duration, paths]= getDirectionTwoGeographicalPoints.getDirectionTwoGeographicalPoints(origins, destinations, tempmode, date, apikey)
 
                 # Record distance and path into database
                 output = recordDistancesDirections.recordDistancesDirections(i, j, origins, destinations, tempmode, distance, paths, city, state, duration, 0)
@@ -83,7 +85,7 @@ def roadsMappingService(pp, inputFile, city, state, date):
             #B to A
             try:
                 # Get the distance for backward path
-                [distance, duration, paths] = getDirectionTwoGeographicalPoints.getDirectionTwoGeographicalPoints(destinations, origins, tempmode, date)
+                [distance, duration, paths] = getDirectionTwoGeographicalPoints.getDirectionTwoGeographicalPoints(destinations, origins, tempmode, date, apikey)
 
 
                 # Record distance and path into database
@@ -101,7 +103,7 @@ def roadsMappingService(pp, inputFile, city, state, date):
             #A TO B
             try:
                 # Get the distance for forward path
-                [distance, duration, paths]= getDirectionTwoGeographicalPoints.getDirectionTwoGeographicalPoints(origins, destinations, tempmode, date)
+                [distance, duration, paths]= getDirectionTwoGeographicalPoints.getDirectionTwoGeographicalPoints(origins, destinations, tempmode, date, apikey)
 
                 # Record distance and path into database
                 output = recordDistancesDirections.recordDistancesDirections(i, j, origins, destinations, tempmode, distance, paths, city, state, duration, 0)
@@ -113,7 +115,7 @@ def roadsMappingService(pp, inputFile, city, state, date):
             #B TO A
             try:
                 # Get the distance for backward path
-                [distance, duration, paths] = getDirectionTwoGeographicalPoints.getDirectionTwoGeographicalPoints(destinations, origins, tempmode, date)
+                [distance, duration, paths] = getDirectionTwoGeographicalPoints.getDirectionTwoGeographicalPoints(destinations, origins, tempmode, date, apikey)
 
 
                 # Record distance and path into database
