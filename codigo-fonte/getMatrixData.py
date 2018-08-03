@@ -20,6 +20,7 @@ def getMatrixData(city, state, sheet_name, sheet_name2):
     dfRealFlow = pd.read_excel(path3, sheet_name=sheet_name2)
 
     dfRealFlow.index = dfRealFlow.index - 1
+    dfRealFlow.columns = dfRealFlow.columns - 1
 
     # Get the name of each column and row
     columnsDfRealFlow = dfRealFlow.columns.values
@@ -67,7 +68,7 @@ def getMatrixData(city, state, sheet_name, sheet_name2):
         else:
             i += 1
 
-    #print(dfDistanceTime)
+    #print(dfRealFlow)
     return [pi, pj, dij, f]
 
 
