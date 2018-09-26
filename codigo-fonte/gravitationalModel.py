@@ -19,8 +19,8 @@ def calculation(resultQuantity):
     dij = np.asarray(matrix[2])
     F = np.asarray(matrix[3])
 
-    for idx,val in enumerate(pi):
-        print("[%d] pi: %d -- pj: %d -- dij: %d -- F: %d" %(idx,pi[idx],pj[idx], dij[idx], F[idx]))
+    #for idx,val in enumerate(pi):
+        #print("[%d] pi: %d -- pj: %d -- dij: %d -- F: %d" %(idx,pi[idx],pj[idx], dij[idx], F[idx]))
 
     KEstimation = np.random.uniform(10e-7, 10e-2, resultQuantity)
     sEstimation = np.random.uniform(0.1, 0.4, resultQuantity)
