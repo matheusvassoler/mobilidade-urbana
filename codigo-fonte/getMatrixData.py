@@ -19,8 +19,9 @@ def getMatrixData(city, state, sheet_name, sheet_name2):
     path3 = "./SJC_RMRJ_data/real_flow_people_" + city.upper() + ".xlsx"
     dfRealFlow = pd.read_excel(path3, sheet_name=sheet_name2)
 
-    dfRealFlow.index = dfRealFlow.index - 1
-    dfRealFlow.columns = dfRealFlow.columns - 1
+    if city.upper() == "SJC":
+        dfRealFlow.index = dfRealFlow.index - 1
+        dfRealFlow.columns = dfRealFlow.columns - 1
 
     # Get the name of each column and row
     columnsDfRealFlow = dfRealFlow.columns.values
@@ -72,4 +73,4 @@ def getMatrixData(city, state, sheet_name, sheet_name2):
     return [pi, pj, dij, f]
 
 
-#getMatrixData('sjc', 'sp', 'DrivingDistance', 'Driving')
+getMatrixData('rmrj', 'rj', 'DrivingDistance', 'Driving')

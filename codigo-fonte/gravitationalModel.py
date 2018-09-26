@@ -12,7 +12,7 @@ def calculation(resultQuantity):
     #Call the function that contains informations about pi, pj and dij
     #In this case we want the informations about the Sao Jose dos Campos city
     #We want only distance (dij), the matrix has distance and time, so it's passed an argument that specific the getting of the distances
-    matrix = getMatrixData('sjc', 'sp', 'DrivingDistance', 'Driving')
+    matrix = getMatrixData('rmrj', 'rj', 'DrivingDistance', 'Driving')
 
     pi = np.asarray(matrix[0])
     pj = np.asarray(matrix[1])
