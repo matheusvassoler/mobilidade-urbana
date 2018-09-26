@@ -72,4 +72,4 @@ def getMatrixData(city, state, sheet_name, sheet_name2):
     return [pi, pj, dij, f]
 
 
-getMatrixData('sjc', 'sp', 'DrivingDistance', 'Driving')
+#getMatrixData('sjc', 'sp', 'DrivingDistance', 'Driving')
